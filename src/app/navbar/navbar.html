@@ -1,0 +1,36 @@
+<nav class="navbar">
+
+  <div class="nav-left">
+    <a class="logo" routerLink="/">Shopi</a>
+
+    <div class="nav-links">
+      <a routerLink="/products" [queryParams]="{ category: 'all' }">All</a>
+      <a routerLink="/products" [queryParams]="{ category: 'Clothes' }">Clothes</a>
+      <a routerLink="/products" [queryParams]="{ category: 'Electronics' }">Electronics</a>
+      <a routerLink="/products" [queryParams]="{ category: 'Furniture' }">Furnitures</a>
+      <a routerLink="/products" [queryParams]="{ category: 'Toys' }">Toys</a>
+    </div>
+  </div>
+
+  <div class="nav-right">
+
+    <ng-container *ngIf="!(authService.currentUser$ | async)">
+      <a routerLink="/login">Login</a>
+      <a routerLink="/signup">Signup</a>
+    </ng-container>
+
+    <ng-container *ngIf="authService.currentUser$ | async as user">
+      <span class="user-email">{{ user.email }}</span>
+      <a routerLink="/account">My Account</a>
+      <a routerLink="/cart">My Orders</a>
+      <a class="logout" (click)="authService.logout()">Logout</a>
+    </ng-container>
+
+    <div class="cart" (click)="toggleCartPopup()">
+      <i class="fa fa-shopping-cart"></i>
+      <span class="cart-count">{{ service2.cartCount$ | async }}</span>
+    </div>
+
+  </div>
+
+</nav>

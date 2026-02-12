@@ -1,12 +1,21 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+import { Navbar } from './navbar/navbar';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterOutlet, Navbar,CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected title = 'EcommerceInterViewTask';
+
+  constructor(public router: Router) {}
+
+  get showNavbar(): boolean {
+    return !this.router.url.includes('login') &&
+           !this.router.url.includes('signup');
+  }
 }

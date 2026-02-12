@@ -1,0 +1,36 @@
+.account-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; 
+  background-color: #f9f9f9;
+}
+
+.account-card {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 30px 40px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 15px 0;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.username {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}

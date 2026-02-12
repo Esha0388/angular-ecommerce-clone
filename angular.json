@@ -19,12 +19,21 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+        {
+            "glob": "**/*",
+            "input": "src/assets",
+            "output": "/assets"
+        },
+        {
+            "glob": "favicon.ico",
+            "input": "src",
+            "output": "/"
+          }
+
             ],
             "styles": [
+               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.css"
             ]
           },
@@ -88,5 +97,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "c9967fd6-30e4-40f3-9b93-df82d1a8a4ab"
   }
 }

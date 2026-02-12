@@ -1,0 +1,100 @@
+<h1 class="name">Home</h1>
+
+<div class="nav-head">
+  <input
+    type="text"
+    class="search-input"
+    placeholder="Search Products....."
+    [(ngModel)]="searchText"
+    (input)="filterBySearch()"
+  />
+</div>
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-3 mb-4" *ngFor="let product of filterProducts">
+      <div class="product-card d-flex flex-column align-items-center">
+        <div class="plus-icon" (click)="handleProductClick(product)">
+          {{ service2.isInCart(product.id) ? "✔" : "+" }}
+        </div>
+
+        <div class="all-images">
+          <img
+            [src]="getAllImages(product)[0]"
+            class="product-img"
+            alt="product image"
+          />
+        </div>
+
+        <div class="product-details mt-2 w-100">
+          <p class="category-name">{{ product.category?.name }}</p>
+
+          <div class="product-title-price-row">
+            <h5 class="product-title">{{ product.title }}</h5>
+            <p class="product-price">
+              ${{ product.price | number: "1.2-2" }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cart-popup" *ngIf="isCartOpen">
+  <div class="cart-header">
+    <h3>My Order</h3>
+    <button class="close-btn" (click)="isCartOpen = false">X</button>
+  </div>
+
+  <div class="cart-body">
+    <div class="cart-item" *ngFor="let item of service2.getItems()">
+      <img [src]="getAllImages(item)[0]" class="cart-img" />
+
+      <div class="cart-info">
+        <div class="title-price-row">
+          <p class="cart-title">{{ item.title }}</p>
+          <p class="cart-price">${{ item.price }}</p>
+        </div>
+
+        <div class="qty-controls">
+          <button class="minus-btn" (click)="service2.decreaseQty(item.id)">
+            -
+          </button>
+
+          <span class="qty-number">{{ item.quantity }}</span>
+
+          <button class="plus-btn" (click)="service2.increaseQty(item.id)">
+            +
+          </button>
+        </div>
+      </div>
+
+      <button class="remove-btn" (click)="service2.removeItem(item.id)">
+        X
+      </button>
+    </div>
+  </div>
+
+  <div class="cart-footer">
+    <div class="total-row">
+      <span>Total:</span>
+      <span>${{ service2.getTotalPrice() }}</span>
+    </div>
+
+    <button class="checkout-btn" (click)="checkout()">Checkout</button>
+  </div>
+</div>
+<div class="cart-body">
+
+<div class="empty-cart" *ngIf="filterProducts.length === 0">
+  <p>Nothing related :(</p>
+</div>
+
+  <div class="cart-item" *ngFor="let item of service2.getItems()">
+    ...
+  </div>
+
+
+
+</div>
