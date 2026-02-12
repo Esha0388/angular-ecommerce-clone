@@ -18,7 +18,6 @@ It is a clone of the reference E-commerce UI: [https://fsd-assignment.netlify.ap
 - **Add to Cart** & Cart Management
 - **Mock Checkout** Process
 - **User Authentication** (Login/Signup using Firebase)
-- Responsive Design (desktop & mobile)
 - API Integration with **Platzi Fake API**
 
 ---
